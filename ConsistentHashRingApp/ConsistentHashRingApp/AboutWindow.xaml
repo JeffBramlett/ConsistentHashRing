@@ -1,0 +1,16 @@
+﻿<Window x:Class="ConsistentHashRingApp.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConsistentHashRingApp"
+        mc:Ignorable="d"
+        Title="About" Height="310.15" Width="425.188" ResizeMode="NoResize">
+    <Grid>
+        <Button Content="Close" Width="100" Margin="109,0,108,7" VerticalAlignment="Bottom" IsCancel="True"/>
+        <Label Content="Consistent Hash Ring Demo Application" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Lucida Bright"/>
+        <Label Content="Author: Jeffrey Bramlett, jeff__bramlett@hotmail.com" Margin="0,31,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date: 7/10/2018" Margin="0,62,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

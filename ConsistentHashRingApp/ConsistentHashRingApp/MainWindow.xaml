@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConsistentHashRingApp"
+        xmlns:ViewModels="clr-namespace:ConsistentHashRingApp.ViewModels" x:Class="ConsistentHashRingApp.MainWindow"
+        mc:Ignorable="d"
+        Title="Consistent Hash Ring" Height="599.474" Width="615.789" Icon="Connection_Manager.png">
+    <Window.DataContext>
+        <ViewModels:HashRingViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Menu Height="23" Margin="0,0,0,0" VerticalAlignment="Top">
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Click="MenuItem_Click"/>
+                <MenuItem Header="Links About Consistent Hash Ring"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar Height="28" Margin="0,23,0,0" VerticalAlignment="Top">
+            <Button ToolTip="Add Location" Command="{Binding AddLocationCommand}">
+                <Image Source="Keys.png"/>
+            </Button>
+            <Button ToolTip="Add Item" Command="{Binding AddItemCommand}">
+                <Image Source="Key_Left.png"/>
+            </Button>
+            <Button ToolTip="Delete Selection" Click="ButtonDelete_Click" >
+                <Image Source="delete.png"/>
+            </Button>
+        </ToolBar>
+        <TreeView ItemsSource="{Binding Locations}" Margin="10,55,10,10" SelectedItemChanged="TreeView_SelectedItemChanged">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <WrapPanel Grid.Row="0">
+                            <Image Source="Keys.png"></Image>
+                            <Label Content="{Binding Path=Key}"/>
+                            <Label Content="{Binding Path=Item}"/>
+                        </WrapPanel>
+                        <ListBox Margin="0,33,0,0" ItemsSource="{Binding Nodes}" BorderBrush="Transparent" SelectionChanged="ListBox_SelectionChanged">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <WrapPanel Grid.Row="0">
+                                        <Image Source="Key_Left.png" Width="20"></Image>
+                                        <Label Content="{Binding Path=Key}"/>
+                                        <Label Content="{Binding Path=Item}"/>
+                                    </WrapPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+    </Grid>
+</Window>
